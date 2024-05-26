@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import LogoItem from './components/LogoItem.vue';
-
-
+import LandingPage from "./views/LandingPage.vue";
 </script>
 
 <template>
-  <header>
-    <div>
-      <LogoItem/>
-    </div>
-  </header>
-
   <main>
-    <SignInContainer/>
+    <div>
+      <LandingPage />
+    </div>
   </main>
 </template>
 
