@@ -1,20 +1,19 @@
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from "vue";
 import axios from "axios";
-
 const accessToken = ref<string | null>(null);
 
 const signInWithGoogle = () => {
-  const clientId = "";
-  const redirectUri = "";
-  const googleAuthUrl = "";
+  const clientId = import.meta.env.VITE_CLIENT_ID;
+  const redirectUri = import.meta.env.VITE_REDIERECT_URL;
+  const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email profile openid`;
   window.location.href = googleAuthUrl;
 };
 
 const getAccessToken = async (code: string) => {
-  const clientId = "";
-  const clientSecret = "";
-  const redirectUri = "";
+  const clientId = import.meta.env.VITE_CLIENT_ID;
+  const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
+  const redirectUri = import.meta.env.VITE_REDIERECT_URL;
 
   try {
     const response = await axios.post("", {
@@ -37,18 +36,15 @@ if (code) {
   getAccessToken(code);
 }
 
-export default {
-  name: "SignInContainer",
-};
 </script>
 
 <template>
   <div>
     <h1>Sign In</h1>
-    <button href="">
+    <div @click="signInWithGoogle">
       <img src="" />
       Sign in with Google
-    </button>
+    </div>
   </div>
 </template>
 
